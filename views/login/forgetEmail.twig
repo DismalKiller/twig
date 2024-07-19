@@ -1,0 +1,38 @@
+{% extends "./loginLayout.twig" %}
+
+{% block title %}修改密码{% endblock %}
+
+{% block body %}
+    <div class="login-box">
+        <h1>修改密码</h1>
+        <form id="loginForm">
+            <div class="l-input-box">
+                <img src="/icons/login/email.svg" alt="" class="l-icon"/>
+                <input type="email" id="email" name="email" required class="l-input" placeholder="请输入邮箱地址">
+            </div>
+            <div class="l-input-box">
+                <button type="submit" class="l-button">确 定</button>
+            </div>
+        </form>
+    </div>
+    <script type="module">
+
+        import {sendEmail} from "/javascripts/apis/login.js";
+        import toast from "/javascripts/utils/toast.js";
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            // 获取数据
+            const email = document.getElementById('email').value;
+            sendEmail({email}).then(res => {
+                if (res.code === 200) {
+                    toast('邮件发送成功，请查收！', 'success')
+                    setTimeout(() => {
+                        window.location.href = '/changePassword';
+                    }, 2000)
+                }
+            })
+
+        });
+    </script>
+{% endblock body %}

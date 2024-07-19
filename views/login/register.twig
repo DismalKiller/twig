@@ -1,0 +1,46 @@
+{% extends "./loginLayout.twig" %}
+
+{% block title %}注册{% endblock %}
+
+{% block body %}
+    <div class="login-box">
+        <h1>博客之家</h1>
+        <form id="loginForm">
+            <div class="l-input-box">
+                <img src="/icons/login/username.svg" alt="" class="l-icon"/>
+                <input id="username" name="username" required class="l-input" placeholder="用户名" autofocus>
+            </div>
+            <div class="l-input-box">
+                <img src="/icons/login/password.svg" alt="" class="l-icon"/>
+                <input type="password" id="password" name="password" required class="l-input" placeholder="密码">
+            </div>
+            <div class="l-input-box">
+                <img src="/icons/login/email.svg" alt="" class="l-icon"/>
+                <input type="email" id="email" name="email" required class="l-input" placeholder="邮箱">
+            </div>
+            <div class="l-input-box">
+                <button type="submit" class="l-button">注 册</button>
+            </div>
+        </form>
+    </div>
+    <script type="module">
+        import {register} from "/javascripts/apis/login.js";
+        import toast from "/javascripts/utils/toast.js";
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            // 获取数据
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            register({username, password, email}).then(res => {
+                if (res.code === 200) {
+                    toast(res.msg, 'success')
+                    setTimeout(() => {
+                        window.location.href = '/login'
+                    }, 1000)
+                }
+            })
+        });
+    </script>
+{% endblock body %}

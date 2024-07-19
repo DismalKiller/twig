@@ -1,0 +1,58 @@
+{% extends "./loginLayout.twig" %}
+
+{% block title %}登录{% endblock %}
+
+{% block body %}
+    <div class="login-box">
+        <h1>博客之家</h1>
+        <form id="loginForm">
+            <div class="l-input-box">
+                <img src="/icons/login/username.svg" alt="" class="l-icon"/>
+                <input id="username" name="username" required class="l-input" placeholder="用户名" autofocus>
+            </div>
+            <div class="l-input-box">
+                <img src="/icons/login/password.svg" alt="" class="l-icon"/>
+                <input type="password" id="password" name="password" required class="l-input" placeholder="密码">
+            </div>
+            <div class="l-input-box">
+                <button type="submit" class="l-button">登 录</button>
+            </div>
+        </form>
+        <div class="login-btn">
+            <div style="margin: -10px 30px 0;display:flex;justify-content: space-between;align-items: center">
+                <span>
+                {% include './components/switch.twig' with { 'id': 'remember' } %}
+                <span style="margin-left: 10px;">记住密码</span>
+            </span>
+                <span style="display:flex;align-items: center">
+                <img src="/icons/login/face.svg" alt=""/>
+                <a style="margin-left: 10px;color:#fff;" href="/">人脸识别</a>
+            </span>
+            </div>
+            <div style="margin: 20px 30px;display:flex;justify-content: space-between;align-items: center">
+                <a style="color:#fff;" href="/register">创建账号</a>
+                <a style="color:#fff;" href="/forgetEmail">忘记密码</a>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import {login} from "/javascripts/apis/login.js";
+        import toast from "/javascripts/utils/toast.js";
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+            // 获取数据
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            login({username, password, remember}).then(res => {
+                toast('登录成功', 'success')
+                if (res.code === 200) {
+                    setTimeout(() => {
+                        window.location.href = '/'
+                    }, 1000)
+                }
+            })
+        });
+    </script>
+{% endblock body %}
