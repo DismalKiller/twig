@@ -1,1 +1,54 @@
-<footer>footer</footer>
+<footer>
+    <div class="about">
+        <h3>关于我们</h3>
+        <ul>
+            <li>Max技术交流平台是由Max工作室成员自主开发的在线交流平台</li>
+        </ul>
+    </div>
+    <div class="member">
+        <h3>开发成员</h3>
+        <ul>
+            <li>xxx</li>
+            <li>xxx</li>
+        </ul>
+    </div>
+    <div class="links">
+        <h3>个人博客链接</h3>
+        <ul>
+            <li>xxx博客</li>
+            <li>xxx博客</li>
+        </ul>
+    </div>
+</footer>
+<style>
+    footer {
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        padding: 40px 80px 60px;
+
+        h3 {
+
+            &::after {
+                content: " ";
+                display: block;
+                width: 54px;
+                height: 3px;
+                background-color: #ED0C0C;
+                margin-top: 15px;
+            }
+        }
+
+        .about {
+            flex: 2;
+        }
+
+        .member {
+            flex: 1;
+        }
+
+        .links {
+            flex: 1;
+        }
+    }
+</style>

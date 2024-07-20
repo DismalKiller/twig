@@ -1,1 +1,94 @@
-<header>header</header>
+<style>
+    nav {
+        display: flex;
+        background: rgba(44, 43, 43, 0.8);
+        height: 75px;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 60px;
+
+        .navbar-nav {
+            display: flex;
+            flex: 4;
+            justify-content: space-around;
+            color: #fff;
+            padding: 0 150px;
+
+            .nav-link {
+                font-size: 24px;
+
+                &.active {
+                    color: #A8C4E0;
+                }
+            }
+        }
+
+        .search-box {
+            position: relative;
+            margin: 30px;
+            flex: 3;
+
+            .search-icon {
+                position: absolute;
+                left: 5%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+
+            .search-input {
+                width: 100%;
+                height: 40px;
+                border-radius: 30px;
+                background-color: rgba(0, 0, 0, 0.2);
+                border: none;
+                padding-left: 15%;
+                box-sizing: border-box;
+                color: #fff;
+
+
+            }
+        }
+
+        .avatar-box {
+            flex: 1;
+            text-align: center;
+
+            .avatar {
+                background: #fff;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+        }
+    }
+</style>
+<nav>
+    <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="/">博客</a></li>
+        <li class="nav-item"><a class="nav-link" href="/community">社区</a></li>
+        <li class="nav-item"><a class="nav-link" href="/docs">文件</a></li>
+        <li class="nav-item"><a class="nav-link" href="/profile">我的</a></li>
+    </ul>
+    <div class="search-box">
+        <img class="search-icon" src="/icons/search.svg" alt="搜索图标"/>
+        <input type="search" placeholder="Type here to search" aria-label="Search" class="search-input">
+    </div>
+    <div class="avatar-box">
+        <a href="/user">
+            <img src="/icons/search.svg" alt="头像" class="avatar">
+        </a>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPath) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>

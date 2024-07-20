@@ -6,7 +6,9 @@
 </head>
 <body>
 {% include './header.twig' %}
-{% block body %}{% endblock %}
+<div style="flex: 1">
+    {% block body %}{% endblock %}
+</div>
 {% include './footer.twig' %}
 </body>
 </html>
