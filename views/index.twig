@@ -1,7 +1,72 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-    <p><a href="/login">Login</a></p>
+    <div class="banner">
+        <img src="/img/banner.png" alt="">
+    </div>
+    <div class="content">
+        <aside class="categories">
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <a class="category" href="/?category={{ loop.index }}">{{ category }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+        <div class="homeList">
+            <ul>
+                {% for item in homeList %}
+                    <li>{{ item.title }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <style>
+        .banner {
+            img {
+                width: 100%;
+                margin-top: -75px;
+            }
+        }
+
+        .content {
+            margin: 18px 14px;
+            display: flex;
+
+            .categories {
+                border-radius: 20px;
+                font-size: 14px;
+                text-align: center;
+                border: 1px solid rgba(187, 187, 187, 1);
+                width: 109px;
+
+                ul > li {
+                    padding: 10px 0;
+                    color: #6E6E6E;
+
+                    .active {
+                        color: #101010;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    </style>
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUrl = new URL(window.location.href);
+            const currentCategory = currentUrl.searchParams.get('category');
+
+            const links = document.querySelectorAll('.category');
+            links.forEach(link => {
+                const linkUrl = new URL(link.href);
+                const linkCategory = linkUrl.searchParams.get('category');
+
+                if (linkCategory === currentCategory) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 {% endblock %}

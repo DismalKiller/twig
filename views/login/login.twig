@@ -21,7 +21,7 @@
         <div class="login-btn">
             <div style="margin: -10px 30px 0;display:flex;justify-content: space-between;align-items: center">
                 <span>
-                {% include './components/switch.twig' with { 'id': 'remember' } %}
+                {% include '../components/switch.twig' with { 'id': 'remember' } %}
                 <span style="margin-left: 10px;">记住密码</span>
             </span>
                 <span style="display:flex;align-items: center">
@@ -36,8 +36,8 @@
         </div>
     </div>
     <script type="module">
-        import {login} from "/javascripts/apis/login.js";
-        import toast from "/javascripts/utils/toast.js";
+        import {login} from "/js/apis/login.js";
+        import toast from "/js/utils/toast.js";
 
         document.getElementById('loginForm').addEventListener('submit', function (event) {
             event.preventDefault(); // 阻止表单默认提交行为

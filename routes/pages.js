@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 // 首页
-router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Express'});
-});
+const homeController = require('../controller/pages/home.js');
+router.get('/', homeController.home);
 // 登录
 const loginController = require('../controller/pages/login.js');
 router.get('/login', loginController.login);
