@@ -6,7 +6,15 @@
                 <a href="/detail?id={{ item.id }}">
                     <article class="rank-item">
                         <div class="left">
-
+                            {% if loop.index == 1 %}
+                                <img src="/icons/first.svg" alt="first"/>
+                            {% elseif loop.index == 2 %}
+                                <img src="/icons/second.svg" alt="second"/>
+                            {% elseif loop.index == 3 %}
+                                <img src="/icons/third.svg" alt="third"/>
+                            {% else %}
+                                {{ loop.index }}
+                            {% endif %}
                         </div>
                         <div class="right">
                             <div class="title">{{ item.title }}</div>
@@ -43,8 +51,19 @@
                 padding-left: 25px;
                 padding-right: 20px;
                 margin: 12px 0;
+                display: flex;
+
+                .left {
+                    width: 27px;
+                    margin-right: 20px;
+                    text-align: center;
+                    font-weight: bold;
+                    /*font-family: FZHanZhenGuangBiao-bold;*/
+                }
 
                 .right {
+                    flex: 1;
+
                     .title {
                         color: rgb(44, 43, 43);
                         font-size: 12px;

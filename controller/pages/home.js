@@ -169,7 +169,7 @@ exports.home = (req, res, next) => {
     chatList.forEach(item => {
         item.time = dayjs(item.time).fromNow()
     })
-    homeList.rows[0].title = categories[req.query.category - 1] || categories[0]
+    homeList.rows[0].title = categories.rows[req.query.category - 1] || categories.rows[0]
     res.render('index', {
         categories, homeList, rankList, chatList, blog
     });
