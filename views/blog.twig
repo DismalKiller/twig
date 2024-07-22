@@ -1,0 +1,54 @@
+<section class="blog">
+    <h2 class="title"><span>官方博客</span></h2>
+    <div class="content">
+        <div class="left">
+            <img src="{{ blog.img }}" alt="">
+        </div>
+        <div class="right">
+            <div class="name">{{ blog.name }}</div>
+            <button>+ 关注</button>
+        </div>
+    </div>
+</section>
+<style>
+    .blog {
+        padding: 0 20px;
+
+        .title {
+            span {
+                padding-bottom: 10px;
+                border-bottom: 3px solid;
+                border-image-source: linear-gradient(to right, #B1E1F4, #FF4912);
+                border-image-slice: 1; /* 将渐变应用到边框上 */
+            }
+        }
+
+        .content {
+            display: flex;
+            margin-top: 40px;
+            align-items: center;
+
+            .right {
+                margin-left: 25px;
+                text-align: center;
+
+                .name {
+                    color: grey;
+                }
+
+                button {
+                    margin-top: 15px;
+                    background: #fff;
+                    border-radius: 5px;
+                    border: 1px solid #d52020;
+                    padding: 5px 10px;
+
+                    &:hover {
+                        background: #d52020;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+</style>

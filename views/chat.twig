@@ -1,0 +1,114 @@
+<section class="chat">
+    <h2 class="title">聊天区</h2>
+    <div class="search">
+        <input type="text" placeholder="请输入搜索内容">
+        <button>搜索</button>
+    </div>
+    <ul class="chat-list">
+        {% for item in chatList %}
+            <a href="/chat?id={{ item.id }}">
+                <li class="chat-item">
+                    <div class="left">
+                        <img src="{{ item.img }}" alt="">
+                    </div>
+                    <div class="right">
+                        <div class="title">
+                            <div class="name">{{ item.name }}</div>
+                            <span class="time">{{ item.time }}</span>
+                        </div>
+                        <div class="content">{{ item.content }}</div>
+                    </div>
+                </li>
+            </a>
+        {% endfor %}
+    </ul>
+</section>
+<style>
+    .chat {
+        .title {
+            color: rgb(136, 129, 129);
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .search {
+            margin: 20px;
+            display: flex;
+            justify-content: space-between;
+
+            input {
+                border-radius: 500px;
+                background-color: rgba(242, 242, 247, 1);
+                color: rgba(136, 129, 129, 1);
+                font-size: 14px;
+                border: none;
+                width: 250px;
+                height: 34px;
+                padding-left: 10px;
+                margin-right: 5px;
+            }
+
+            button {
+                width: 50px;
+                height: 36px;
+                line-height: 20px;
+                border-radius: 20px;
+                background-color: rgba(243, 243, 243, 1);
+                color: rgba(16, 16, 16, 1);
+                font-size: 14px;
+                border: none;
+
+                &:hover {
+                    filter: brightness(0.9);
+                }
+
+                &:active {
+                    filter: brightness(0.8);
+                }
+            }
+        }
+
+        .chat-list {
+            .chat-item {
+                display: flex;
+                padding-bottom: 20px;
+                margin: 5px 20px 20px 20px;
+                border-bottom: 1px solid rgba(242, 242, 247, 1);;
+
+                .left {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                }
+
+                .right {
+                    margin-left: 10px;
+                    flex: 1;
+
+                    .title {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+
+                        .name {
+                            color: rgba(44, 43, 43, 1);
+                            font-size: 14px;
+                        }
+
+                        .time {
+                            color: rgb(199, 199, 204);
+                            font-size: 10px;
+                        }
+                    }
+
+                    .content {
+                        color: rgb(136, 129, 129);
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+</style>

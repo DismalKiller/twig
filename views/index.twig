@@ -4,24 +4,15 @@
     <div class="banner">
         <img src="/img/banner.png" alt="">
     </div>
-    <div class="content">
-        <aside class="categories">
-            <ul>
-                {% for category in categories %}
-                    <li>
-                        <a class="category" href="/?category={{ loop.index }}">{{ category }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+    <main class="container">
+        {% include 'categories.twig' with {categories} %}
+        {% include 'homeList.twig' with {homeList} %}
+        <aside class="aside">
+            {% include 'rank.twig' with {rankList} %}
+            {% include 'chat.twig' with {chatList} %}
+            {% include 'blog.twig' with {blog} %}
         </aside>
-        <div class="homeList">
-            <ul>
-                {% for item in homeList %}
-                    <li>{{ item.title }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    </main>
     <style>
         .banner {
             img {
@@ -30,26 +21,14 @@
             }
         }
 
-        .content {
+        .container {
             margin: 18px 14px;
             display: flex;
+            justify-content: space-between;
 
-            .categories {
-                border-radius: 20px;
-                font-size: 14px;
-                text-align: center;
-                border: 1px solid rgba(187, 187, 187, 1);
-                width: 109px;
+            .aside {
+                width: 360px;
 
-                ul > li {
-                    padding: 10px 0;
-                    color: #6E6E6E;
-
-                    .active {
-                        color: #101010;
-                        font-weight: 700;
-                    }
-                }
             }
         }
     </style>
@@ -57,8 +36,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             const currentUrl = new URL(window.location.href);
             const currentCategory = currentUrl.searchParams.get('category');
-
             const links = document.querySelectorAll('.category');
+            if (currentCategory === null) links[0].classList.add('active');
             links.forEach(link => {
                 const linkUrl = new URL(link.href);
                 const linkCategory = linkUrl.searchParams.get('category');

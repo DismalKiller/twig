@@ -1,0 +1,75 @@
+<section class="rank">
+    <h2 class="title">热门阅读</h2>
+    <ul class="rank-list">
+        {% for item in rankList %}
+            <li>
+                <a href="/detail?id={{ item.id }}">
+                    <article class="rank-item">
+                        <div class="left">
+
+                        </div>
+                        <div class="right">
+                            <div class="title">{{ item.title }}</div>
+                            <div class="info">
+                                <div class="author">{{ item.author }}</div>
+                                <div class="read">
+                                    <img src="/icons/view.svg" alt="">
+                                    {{ item.read }}
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+<style>
+    .rank {
+        border: 1px solid #BBBBBB;
+
+        & > .title {
+            border-left: 5px solid #ED0C0C;
+            padding-left: 20px;
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+
+        .rank-list {
+            border-top: 1px solid #BBBBBB;
+
+
+            .rank-item {
+                padding-left: 25px;
+                padding-right: 20px;
+                margin: 12px 0;
+
+                .right {
+                    .title {
+                        color: rgb(44, 43, 43);
+                        font-size: 12px;
+                    }
+
+                    .info {
+                        display: flex;
+                        justify-content: space-between;
+                        color: rgba(110, 110, 110, 1);
+                        font-size: 8px;
+                        margin-top: 6px;
+
+                        .read {
+                            display: flex;
+                            align-items: center;
+
+                            img {
+                                margin-right: 2px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+</style>
