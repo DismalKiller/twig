@@ -1,33 +1,125 @@
-{# pagination.twig #}
+{% set pageSizeList = [10, 20, 50, 100] %}
 
-{% macro pagination(pagination) %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            {% if pagination.current_page > 1 %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="{{ pagination.url_pattern|replace('(:num)', pagination.current_page - 1) }}"
-                       aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-            {% endif %}
-
-            {% for i in 1..pagination.total_pages %}
-                <li class="page-item {{ i == pagination.current_page ? 'active' : '' }}">
-                    <a class="page-link" href="{{ pagination.url_pattern|replace('(:num)', i) }}">{{ i }}</a>
-                </li>
+<div class="pagination">
+    <div class="total">
+        共{{ total }}条
+    </div>
+    <div class="page-size">
+        每页
+        <select name="pageSize" class="page-size-select" onchange="page()">
+            {% for pageSize in pageSizeList %}
+                <option value="{{ pageSize }}"
+                        {% if pageSize == homeList.pageSize %}selected{% endif %}>{{ pageSize }}</option>
             {% endfor %}
+        </select>
+        条
+    </div>
+    <div class="page-num">
+        {% macro pageNumItem(pageNum,currentPage) %}
+            <a href="javascript:;" onclick="page({{ pageNum }})"
+               class="page-num-item {% if currentPage == pageNum %}active{% endif %}"
+            >{{ pageNum }}</a>
+        {% endmacro %}
+        {% import _self as pageNumItem %}
+        {% if homeList.totalPage < 6 %}
+            <!-- 如果总页数小于6，按原样显示所有页码 -->
+            {% for pageNum in 1..homeList.totalPage %}
+                {{ pageNumItem.pageNumItem(pageNum, homeList.currentPage) }}
+            {% endfor %}
+        {% else %}
+            <!-- 如果总页数大于等于6，只显示首页、尾页和当前页前后页 -->
 
-            {% if pagination.current_page < pagination.total_pages %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="{{ pagination.url_pattern|replace('(:num)', pagination.current_page + 1) }}"
-                       aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+            {% if homeList.currentPage > 2 %}
+                {{ pageNumItem.pageNumItem(1, homeList.currentPage) }}
+                {% if homeList.currentPage > 3 %}
+                    <span>...</span>
+                {% endif %}
             {% endif %}
-        </ul>
-    </nav>
-{% endmacro %}
+
+            {% if homeList.currentPage > 1 %}
+                {{ pageNumItem.pageNumItem(homeList.currentPage - 1, homeList.currentPage) }}
+            {% endif %}
+            {{ pageNumItem.pageNumItem(homeList.currentPage, homeList.currentPage) }}
+
+            {% if homeList.currentPage < homeList.totalPage - 1 %}
+                {{ pageNumItem.pageNumItem(homeList.currentPage + 1, homeList.currentPage) }}
+            {% endif %}
+
+            {% if homeList.currentPage < homeList.totalPage %}
+                {% if homeList.currentPage < homeList.totalPage-2 %}
+                    <span>...</span>
+                {% endif %}
+                {{ pageNumItem.pageNumItem(homeList.totalPage, homeList.currentPage) }}
+            {% endif %}
+        {% endif %}
+
+    </div>
+    <div class="goto-page">
+        前往
+        <input onkeyup="if(event.keyCode==13){page(this.value)}" type="text" class="goto-page-input"
+               value="{{ pageNum }}"/>
+        页
+    </div>
+</div>
+<script>
+    function page(pageNum = 1) {
+        const pageSize = document.querySelector('.page-size-select').value;
+        let url = window.location.href;
+        const urlParams = new URLSearchParams(new URL(url).search);
+        if (urlParams.has('pageSize')) {
+            urlParams.set('pageSize', pageSize);
+        } else {
+            urlParams.append('pageSize', pageSize);
+        }
+        if (urlParams.has('pageNum')) {
+            urlParams.set('pageNum', pageNum);
+        } else {
+            urlParams.append('pageNum', pageNum);
+        }
+        window.location.href = url.split('?')[0] + '?' + urlParams.toString();
+    }
+</script>
+<style>
+    .pagination {
+        display: flex;
+        gap: 30px;
+        padding: 30px;
+        align-items: center;
+
+        .page-size {
+            select {
+                width: 60px;
+                height: 28px;
+                border-radius: 3px 3px 3px 3px;
+                background-color: rgba(255, 255, 255, 1);
+                text-align: center;
+                border: 1px solid rgba(220, 223, 230, 1);
+            }
+        }
+
+        .page-num {
+            margin-left: 50px;
+            margin-right: 50px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            width: 250px;
+
+            .active {
+                color: #1989FA;
+            }
+        }
+
+        .goto-page {
+            input {
+                width: 60px;
+                height: 28px;
+                border-radius: 3px 3px 3px 3px;
+                background-color: rgba(255, 255, 255, 1);
+                border: 1px solid rgba(220, 223, 230, 1);
+                text-align: center;
+                margin: 6px;
+            }
+        }
+    }
+</style>

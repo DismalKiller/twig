@@ -32,20 +32,4 @@
             }
         }
     </style>
-    <script type="module">
-        document.addEventListener('DOMContentLoaded', function () {
-            const currentUrl = new URL(window.location.href);
-            const currentCategory = currentUrl.searchParams.get('category');
-            const links = document.querySelectorAll('.category');
-            if (currentCategory === null) links[0].classList.add('active');
-            links.forEach(link => {
-                const linkUrl = new URL(link.href);
-                const linkCategory = linkUrl.searchParams.get('category');
-
-                if (linkCategory === currentCategory) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 {% endblock %}

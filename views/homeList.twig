@@ -32,9 +32,7 @@
             </li>
         {% endfor %}
     </ul>
-    {% import 'pagination.twig' as pagination %}
-
-    {{ pagination.pagination(pagination) }}
+    {% include 'pagination.twig' with {total: homeList.total, url: '/'} %}
 </section>
 <style>.homeList {
         border-radius: 20px;

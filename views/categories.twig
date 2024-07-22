@@ -1,8 +1,11 @@
 <div class="categories">
     <ul>
-        {% for category in categories %}
+        {% for category in categories.rows %}
             <li>
-                <a class="category" href="/?category={{ loop.index }}">{{ category }}</a>
+                <a class="category
+                    {% if loop.index == categories.current %}active{% endif %}
+                    {% if categories.current == null and loop.index == 1 %}active{% endif %} "
+                   href="/?category={{ loop.index }}">{{ category }}</a>
             </li>
         {% endfor %}
     </ul>

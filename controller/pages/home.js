@@ -5,6 +5,7 @@ const relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 exports.home = (req, res, next) => {
+    const total = 800
     const homeList = {
         rows: [
             {
@@ -78,12 +79,18 @@ exports.home = (req, res, next) => {
                 read: 0,
                 img: 'https://picsum.photos/230/90'
             }],
-        total: 800,
+        total,
+        totalPage: total / (req.query.pageSize || 10),
+        currentPage: req.query.pageNum || 1,
+        pageSize: req.query.pageSize || 10,
     }
-    const categories = [
-        '推荐', '动态', '排行榜', '程序人生', 'Python', 'Java', '人工智能', '前端', '架构', '区块链',
-        '数据库', '5G技术', '游戏开发', '运维', '网络安全', '云计算', '大数据', '研发管理', '物联网', '计算机基础',
-    ]
+    const categories = {
+        rows: [
+            '推荐', '动态', '排行榜', '程序人生', 'Python', 'Java', '人工智能', '前端', '架构', '区块链',
+            '数据库', '5G技术', '游戏开发', '运维', '网络安全', '云计算', '大数据', '研发管理', '物联网', '计算机基础',
+        ],
+        current: req.query.category
+    }
     const rankList = [
         {
             id: 1,
