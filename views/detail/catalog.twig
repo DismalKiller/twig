@@ -1,3 +1,45 @@
 <div class="catalog">
-    {% macro %}
+    <div class="title">文章目录</div>
+    {% import _self as self %}
+    {% macro render(item,index) %}
+        {% set chineseNumArr = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十'] %}
+        {{ chineseNumArr[index] }}、{{ item.title }}
+        {% if item.children|length > 0 %}
+            <ul style="margin-left: 25px;">
+                {% for child in item.children %}
+                    <li>
+                        {# {{ _self.render(child) }} #}
+                        {{ loop.index }}、{{ child.title }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endmacro %}
+    <ul class="catalog-list">
+        {% for item in catalogList %}
+            <li>
+                {{ self.render(item,loop.index0) }}
+            </li>
+        {% endfor %}
+    </ul>
 </div>
+<style>
+    .catalog {
+        border: 1px solid rgba(187, 187, 187, 1);
+        padding-bottom: 40px;
+
+        .title {
+            padding: 11px 19px;
+            background: #F3F3F3;
+        }
+
+        .catalog-list {
+            padding-top: 12px;
+            padding-left: 50px;
+
+            li {
+                margin-top: 5px;
+            }
+        }
+    }
+</style>
