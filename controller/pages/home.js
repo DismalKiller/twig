@@ -6,7 +6,7 @@ dayjs.extend(relativeTime)
 
 exports.home = (req, res, next) => {
     const total = 800
-    const homeList = {
+    const homeData = {
         rows: [
             {
                 id: 1,
@@ -79,10 +79,12 @@ exports.home = (req, res, next) => {
                 read: 0,
                 img: 'https://picsum.photos/230/90'
             }],
-        total,
-        totalPage: total / (req.query.pageSize || 10),
-        currentPage: req.query.pageNum || 1,
-        pageSize: req.query.pageSize || 10,
+        pageParams: {
+            total,
+            totalPage: total / (req.query.pageSize || 10),
+            currentPage: req.query.pageNum || 1,
+            pageSize: req.query.pageSize || 10,
+        }
     }
     const categories = {
         rows: [
@@ -169,8 +171,8 @@ exports.home = (req, res, next) => {
     chatList.forEach(item => {
         item.time = dayjs(item.time).fromNow()
     })
-    homeList.rows[0].title = categories.rows[req.query.category - 1] || categories.rows[0]
+    homeData.rows[0].title = categories.rows[req.query.category - 1] || categories.rows[0]
     res.render('index', {
-        categories, homeList, rankList, chatList, blog
+        categories, homeData, rankList, chatList, blog
     });
 };

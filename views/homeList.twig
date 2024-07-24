@@ -1,6 +1,6 @@
 <section class="homeList">
     <ul>
-        {% for item in homeList.rows %}
+        {% for item in homeData.rows %}
             <li>
                 <a href="/detail?id={{ item.id }}">
                     <article>
@@ -32,7 +32,7 @@
             </li>
         {% endfor %}
     </ul>
-    {% include 'pagination.twig' with {total: homeList.total, url: '/'} %}
+    {% include 'pagination.twig' with {url: '/',pageParams: homeData.pageParams} %}
 </section>
 <style>.homeList {
         border-radius: 20px;

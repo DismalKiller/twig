@@ -2,14 +2,14 @@
 
 <div class="pagination">
     <div class="total">
-        共{{ total }}条
+        共{{ pageParams.total }}条
     </div>
     <div class="page-size">
         每页
         <select name="pageSize" class="page-size-select" onchange="page()">
             {% for pageSize in pageSizeList %}
                 <option value="{{ pageSize }}"
-                        {% if pageSize == homeList.pageSize %}selected{% endif %}>{{ pageSize }}</option>
+                        {% if pageSize == pageParams.pageSize %}selected{% endif %}>{{ pageSize }}</option>
             {% endfor %}
         </select>
         条
@@ -21,35 +21,35 @@
             >{{ pageNum }}</a>
         {% endmacro %}
         {% import _self as pageNumItem %}
-        {% if homeList.totalPage < 6 %}
+        {% if pageParams.totalPage < 6 %}
             <!-- 如果总页数小于6，按原样显示所有页码 -->
-            {% for pageNum in 1..homeList.totalPage %}
-                {{ pageNumItem.pageNumItem(pageNum, homeList.currentPage) }}
+            {% for pageNum in 1..pageParams.totalPage %}
+                {{ pageNumItem.pageNumItem(pageNum, pageParams.currentPage) }}
             {% endfor %}
         {% else %}
             <!-- 如果总页数大于等于6，只显示首页、尾页和当前页前后页 -->
 
-            {% if homeList.currentPage > 2 %}
-                {{ pageNumItem.pageNumItem(1, homeList.currentPage) }}
-                {% if homeList.currentPage > 3 %}
+            {% if pageParams.currentPage > 2 %}
+                {{ pageNumItem.pageNumItem(1, pageParams.currentPage) }}
+                {% if pageParams.currentPage > 3 %}
                     <span>...</span>
                 {% endif %}
             {% endif %}
 
-            {% if homeList.currentPage > 1 %}
-                {{ pageNumItem.pageNumItem(homeList.currentPage - 1, homeList.currentPage) }}
+            {% if pageParams.currentPage > 1 %}
+                {{ pageNumItem.pageNumItem(pageParams.currentPage - 1, pageParams.currentPage) }}
             {% endif %}
-            {{ pageNumItem.pageNumItem(homeList.currentPage, homeList.currentPage) }}
+            {{ pageNumItem.pageNumItem(pageParams.currentPage, pageParams.currentPage) }}
 
-            {% if homeList.currentPage < homeList.totalPage - 1 %}
-                {{ pageNumItem.pageNumItem(homeList.currentPage + 1, homeList.currentPage) }}
+            {% if pageParams.currentPage < pageParams.totalPage - 1 %}
+                {{ pageNumItem.pageNumItem(pageParams.currentPage + 1, pageParams.currentPage) }}
             {% endif %}
 
-            {% if homeList.currentPage < homeList.totalPage %}
-                {% if homeList.currentPage < homeList.totalPage-2 %}
+            {% if pageParams.currentPage < pageParams.totalPage %}
+                {% if pageParams.currentPage < pageParams.totalPage-2 %}
                     <span>...</span>
                 {% endif %}
-                {{ pageNumItem.pageNumItem(homeList.totalPage, homeList.currentPage) }}
+                {{ pageNumItem.pageNumItem(pageParams.totalPage, pageParams.currentPage) }}
             {% endif %}
         {% endif %}
 

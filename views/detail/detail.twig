@@ -1,29 +1,23 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-    <div class="home">
-        <div class="banner">
-            <img src="/img/banner.png" alt="">
-        </div>
+    <div class="detail">
         <main class="container">
-            {% include 'categories.twig' with {categories} %}
-            {% include 'homeList.twig' with {homeData} %}
+            <div class="left">
+                {% include './article.twig' with {detail} %}
+                {% include './comment.twig' with {commentList} %}
+                {% include './recommendRelated.twig' with {recommendRelatedList} %}
+            </div>
             <aside class="aside">
-                {% include 'rank.twig' with {rankList} %}
+                {% include './recommendAuthors.twig' with {recommendAuthorsList} %}
                 {% include 'chat.twig' with {chatList} %}
+                {% include './catalog.twig' with {catalogList} %}
                 {% include 'blog.twig' with {blog} %}
             </aside>
         </main>
     </div>
     <style>
-        .home {
-            .banner {
-                img {
-                    width: 100%;
-                    margin-top: -75px;
-                }
-            }
-
+        .detail {
             .container {
                 margin: 18px 14px;
                 display: flex;
@@ -31,7 +25,6 @@
 
                 .aside {
                     width: 360px;
-
                 }
             }
         }

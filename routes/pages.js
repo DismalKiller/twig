@@ -10,6 +10,8 @@ router.get('/login', loginController.login);
 router.get('/register', loginController.register);
 router.get('/forgetEmail', loginController.forgetEmail);
 router.get('/changePassword', loginController.changePassword);
-
+//详情
+const detailController = require('../controller/pages/detail.js');
+router.get('/detail', detailController.detail);
 
 module.exports = router;
