@@ -58,17 +58,20 @@ exports.detail = (req, res, next) => {
             id: 1,
             name: 'credreamer',
             job: '职业',
-            articles: 12312
+            articles: 12312,
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         }, {
             id: 2,
             name: 'credreamer',
             job: '职业',
-            articles: 12312
+            articles: 12312,
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         }, {
             id: 3,
             name: 'credreamer',
             job: '职业',
-            articles: 12312
+            articles: 12312,
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
     ]
     const chatList = [

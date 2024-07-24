@@ -1,1 +1,65 @@
-recommendAuthors
+<div class="recommendAuthors">
+    <h4>推荐作者</h4>
+    <div class="content">
+        <ul>
+            {% for item in recommendAuthorsList %}
+                <a href="/user/{{ item.id }}">
+                    <li class="item">
+                        <div class="avatar">
+                            <img src="{{ item.avatar }}" alt=""/>
+                        </div>
+                        <div class="info">
+                            <div class="name">{{ item.name }}</div>
+                            <div class="job">{{ item.job }}</div>
+                        </div>
+                        <div class="articles-num">{{ item.articles }}篇</div>
+                    </li>
+                </a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<style>
+    .recommendAuthors {
+        border-radius: 20px;
+        border: 1px solid rgba(187, 187, 187, 1);
+        padding: 10px 25px 0px;
+
+        h4 {
+            margin-top: 0;
+        }
+
+        .content {
+            .item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 14px;
+
+                .avatar {
+                    img {
+                        width: 55px;
+                        height: 55px;
+                        border: 1px solid rgba(187, 187, 187, 1);
+                        border-radius: 50%
+                    }
+                }
+
+                .info {
+                    flex: 1;
+                    margin-left: 10px;
+                    align-self: flex-start;
+
+                    .name {
+                        margin-bottom: 7px;
+                    }
+                }
+
+                .articles-num {
+                    color: #9F9F9F;
+                    font-size: 15px
+                }
+            }
+        }
+    }
+</style>
