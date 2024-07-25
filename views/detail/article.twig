@@ -1,1 +1,133 @@
-<article class="article">article</article>
+<article class="article">
+    <h2>{{ detail.title }}</h2>
+    <div class="info">
+        <div class="avatar">
+            <img src="{{ detail.avatar }}" alt=""/>
+        </div>
+        <div class="articleInfo">
+            <div class="top">
+                <div class="author">{{ detail.author }}</div>
+                <div class="time">{{ detail.time }}</div>
+                <div class="read"><img src="/icons/view.svg" alt="" width="21px" height="21px">{{ detail.read }}</div>
+                <div class="star"><img src="/icons/star.svg" alt="">{{ detail.star }}</div>
+            </div>
+            <div class="keywords">
+                关键词:
+                {% for keyword in detail.keywords %}
+                    <div class="keyword">
+                        {{ keyword }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        {{ detail.content }}
+    </div>
+    <div class="footer">
+        <div class="like">
+            <img src="/icons/like.svg" alt="" width="21px" height="21px"/>
+            {{ detail.like }}
+        </div>
+        <div class="bad">
+            <img src="/icons/bad.svg" alt="" width="21px" height="21px"/>
+            踩
+        </div>
+        <div class="comment">
+            <img src="/icons/comment-fill.svg" alt="" width="21px" height="21px"/>
+            评论
+        </div>
+        <div class="share">
+            <img src="/icons/share.svg" alt="" width="21px" height="21px"/>
+            分享
+        </div>
+        <div class="star">
+            <img src="/icons/star.svg" alt="" width="21px" height="21px"/>
+            收藏
+        </div>
+        <div class="follow">关注</div>
+        <div class="triple">一键三连</div>
+    </div>
+</article>
+<style>
+    .article {
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(187, 187, 187, 1);
+
+        .info {
+            display: flex;
+            gap: 10px;
+            background: #F6F6F6;
+            width: calc(100% - 40px);
+            padding: 20px;
+            border-radius: 20px;
+
+            .avatar {
+                width: 60px;
+                height: 60px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    border: 1px solid #bbb;
+                }
+            }
+
+            .articleInfo {
+                align-items: center;
+
+                .top {
+                    display: flex;
+                    gap: 25px;
+                    align-items: center;
+
+                    & > div {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                    }
+                }
+
+                .keywords {
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 10px;
+
+                    .keyword {
+                        border: 1px solid rgba(187, 187, 187, 1);
+                    }
+                }
+            }
+        }
+
+        .content {
+            margin: 20px 0;
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background-color: rgba(246, 246, 246, 1);
+            margin: 0 -30px -30px;
+            border-radius: 0 0 20px 20px;
+            height: 60px;
+            padding: 0 30px;
+
+            & > div {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .follow, .triple {
+                border-radius: 20px;
+                background-color: rgba(139, 193, 255, 1);
+                color: rgba(255, 255, 255, 1);
+                padding: 0 10px;
+            }
+        }
+    }
+</style>
