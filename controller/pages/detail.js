@@ -17,8 +17,9 @@ exports.detail = (req, res, next) => {
         {
             id: 1,
             author: '舟舟今天学习了吗',
+            avatar: 'https://picsum.photos/35',
             time: '2020-07-01',
-            content: '弹性伸缩具有应突发、省成本。自动化的业务价值。平台侧将各业务零散、闲五资源进行整合，形成一个大规模资源池，通过弹性调度、库存管控技术在公司运营成本和业务体感中寻求较好的平衡。',
+            content: '弹性伸缩具有应突发、省成本。',
             like: 234,
             isLike: false,
             isBad: false,
@@ -26,14 +27,36 @@ exports.detail = (req, res, next) => {
                 {
                     id: 2,
                     author: '舟舟今天学习了吗',
+                    avatar: 'https://picsum.photos/35',
                     time: '2020-07-01',
-                    content: '弹性伸缩具有应突发、省成本。自动化的业务价值。平台侧将各业务零散、闲五资源进行整合，形成一个大规模资源池，通过弹性调度、库存管控技术在公司运营成本和业务体感中寻求较好的平衡。',
+                    content: '弹性伸缩具有应突发、省成本。',
                     like: 234,
                     isLike: false,
                     isBad: false,
                 }
             ]
-        }
+        }, {
+            id: 3,
+            author: '舟舟今天学习了吗',
+            avatar: 'https://picsum.photos/35',
+            time: '2020-07-01',
+            content: '弹性伸缩具有应突发、省成本。',
+            like: 234,
+            isLike: false,
+            isBad: false,
+            reply: [
+                {
+                    id: 4,
+                    author: '舟舟今天学习了吗',
+                    avatar: 'https://picsum.photos/35',
+                    time: '2020-07-01',
+                    content: '弹性伸缩具有应突发、省成本。',
+                    like: 234,
+                    isLike: false,
+                    isBad: false,
+                }
+            ]
+        },
     ]
     const recommendRelatedList = [
         {
@@ -80,35 +103,35 @@ exports.detail = (req, res, next) => {
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2024-07-22 11:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
         {
             id: 2,
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2024-06-22 11:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
         {
             id: 3,
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2023-07-22 11:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
         {
             id: 4,
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2024-07-22 10:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
         {
             id: 5,
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2024-07-22 12:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
     ]
     const blog = {name: '华为开发者论坛', img: 'https://picsum.photos/90'}

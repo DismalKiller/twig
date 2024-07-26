@@ -136,35 +136,35 @@ exports.home = (req, res, next) => {
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2024-07-22 11:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
         {
             id: 2,
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2024-06-22 11:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
         {
             id: 3,
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2023-07-22 11:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
         {
             id: 4,
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2024-07-22 10:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
         {
             id: 5,
             name: 'JAVA交流组织',
             content: 'java天下第一',
             time: '2024-07-22 12:45:26',
-            img: 'https://picsum.photos/35'
+            avatar: "https://avatars2.githubusercontent.com/u/11473707?s=460&v=4"
         },
     ]
     const blog = {name: '华为开发者论坛', img: 'https://picsum.photos/90'}
