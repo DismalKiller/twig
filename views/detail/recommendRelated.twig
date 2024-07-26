@@ -1,1 +1,57 @@
-recommendRelated
+<div class="recommendRelated">
+    <h4 class="title">相关推荐</h4>
+    {% for item in recommendRelatedList %}
+        <div class="item">
+            <a href="/detail?id={{ item.id }}">
+                <div class="top">
+                    <div class="title">{{ item.title }}</div>
+                    <div class="read"><img src="/icons/view-fill.svg" alt="">{{ item.read }}</div>
+                </div>
+                <div class="content">
+                    {{ item.title }}
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+<style>
+    .recommendRelated {
+        border: 1px solid rgba(187, 187, 187, 1);
+        margin-top: 11px;
+
+        & > .title {
+            border-bottom: 1px solid rgba(187, 187, 187, 1);
+            padding: 5px 20px;
+            margin: 0;
+        }
+
+        .item {
+            border-bottom: 1px solid rgba(187, 187, 187, 1);
+            padding: 5px 20px;
+
+            .top {
+                display: flex;
+                justify-content: space-between;
+                font-size: 14px;
+
+                .read {
+                    display: flex;
+                    align-items: center;
+                    color: #9F9F9F;
+                    font-size: 13px;
+                    gap: 5px;
+                }
+            }
+
+            .content {
+                color: #9F9F9F;
+                font-size: 13px;
+            }
+
+            &:last-child {
+                padding-bottom: 25px;
+                border-bottom: none;
+            }
+        }
+    }
+</style>
