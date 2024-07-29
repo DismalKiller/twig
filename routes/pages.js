@@ -13,5 +13,7 @@ router.get('/changePassword', loginController.changePassword);
 //详情
 const detailController = require('../controller/pages/detail.js');
 router.get('/detail', detailController.detail);
-
+//个人主页
+const userController = require('../controller/pages/user.js');
+router.get('/user', userController.user);
 module.exports = router;
