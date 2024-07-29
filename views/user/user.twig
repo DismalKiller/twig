@@ -8,42 +8,19 @@
 <link rel='stylesheet' href='/css/style.css'/>
 <div class="user">
     <div class="left">
-        <div class="info">
+        <div class="person-info">
             <div class="bg">
                 <div class="avatar">
                     <img src="{{ info.avatar }}" alt="">
                 </div>
             </div>
             <div class="name">{{ info.name }}</div>
-            <div class="complete">
+            <div class="btn">
                 <button>完善个人信息</button>
             </div>
         </div>
-        <div class="statistics">
-            <div>
-                <div class="num">{{ statistics.visits }}</div>
-                <div class="title">被访问量</div>
-            </div>
-            <div>
-                <div class="num">{{ statistics.articles }}</div>
-                <div class="title">文章数量</div>
-            </div>
-            <div>
-                <div class="num">{{ statistics.views }}</div>
-                <div class="title">总浏览量</div>
-            </div>
-            <div>
-                <div class="num">{{ statistics.likes }}</div>
-                <div class="title">点赞量</div>
-            </div>
-            <div>
-                <div class="num">{{ statistics.fans }}</div>
-                <div class="title">粉丝数</div>
-            </div>
-        </div>
-        <div class="list">
-            {% include './blogList.twig' with {blogList} %}
-        </div>
+        {% include './statistics.twig' with {statistics} %}
+        {% include './blogList.twig' with {blogList} %}
     </div>
     <div class="right">
         <div class="info"></div>
@@ -53,8 +30,19 @@
 </div>
 <style>
     .user {
+        background-color: rgba(243, 243, 243, 1);
+
         .left {
-            .info {
+            .person-info {
+                width: 1026px;
+                height: 498px;
+                background-color: rgba(255, 255, 255, 1);
+                margin: 10px;
+                border-radius: 20px;
+                position: relative;
+                overflow: hidden;
+
+
                 .bg {
                     height: 382px;
                     width: 100%;
@@ -74,6 +62,29 @@
                             height: 100%;
                             border-radius: 50%;
                         }
+                    }
+                }
+
+                .name {
+                    position: absolute;
+                    bottom: 30px;
+                    left: 85px;
+                    font-size: 36px;
+                    font-weight: bold;
+                }
+
+                .btn {
+                    position: absolute;
+                    right: 45px;
+                    bottom: 28px;
+
+                    button {
+                        background-color: rgba(53, 60, 150, 1);
+                        color: rgba(252, 252, 252, 1);
+                        width: 184px;
+                        height: 49px;
+                        border-radius: 30px;
+                        font-size: 18px;
                     }
                 }
             }
