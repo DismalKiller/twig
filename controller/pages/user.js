@@ -7,7 +7,7 @@ exports.user = (req, res, next) => {
         company: "腾讯",
         avatar: 'https://avatars2.githubusercontent.com/u/11473707?s=460&v=4'
     }
-    const hobby = ['java']
+    const hobby = ['java', 'javascript', 'node', 'c']
     const statistics = {
         visits: 28352, articles: 234, views: 23131, likes: 31232, fans: 21313
     }

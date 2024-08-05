@@ -1,0 +1,49 @@
+<div class="userinfo">
+    <div class="phone">
+        <div class="label"><img src="/icons/user/account.svg" alt="">联系方式</div>
+        <div class="value">{{ info.phone }}</div>
+    </div>
+    <div class="email">
+        <div class="label"><img src="/icons/user/email.svg" alt="">个人邮箱</div>
+        <div class="value">{{ info.email }}</div>
+    </div>
+    <div class="school">
+        <div class="label"><img src="/icons/user/school.svg" alt="">毕业院校</div>
+        <div class="value">{{ info.school }}</div>
+    </div>
+    <div class="company">
+        <div class="label"><img src="/icons/user/company.svg" alt="">就职单位</div>
+        <div class="value">{{ info.company }}</div>
+    </div>
+    <div class="profile">个人简介</div>
+</div>
+<style>
+    .userinfo {
+        padding: 40px;
+        width: 100%;
+        height: 434px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 1);
+        box-sizing: border-box;
+        margin: 10px;
+
+        & > div {
+            display: flex;
+            font-size: 22px;
+            align-items: center;
+            margin-bottom: 24px;
+
+            .label {
+                display: flex;
+                align-items: center;
+                margin-right: 22px;
+            }
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+</style>

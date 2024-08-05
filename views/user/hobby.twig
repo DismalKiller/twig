@@ -1,0 +1,39 @@
+<div class="user-hobby">
+    <div class="title">
+        兴趣领域
+    </div>
+    <div class="content">
+        {% for item in hobby %}
+            <div class="item">
+                # {{ item }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<style>
+    .user-hobby {
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 1);
+        min-height: 249px;
+        overflow: hidden;
+        padding: 20px 30px;
+        margin: 10px;
+
+        .title {
+            font-size: 28px;
+            border-bottom: 1px solid #BBBBBB;
+            padding-bottom: 12px;
+        }
+
+        .content {
+            font-size: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 16px;
+
+            .item {
+                margin: 5px;
+            }
+        }
+    }
+</style>
