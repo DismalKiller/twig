@@ -16,4 +16,9 @@ router.get('/detail', detailController.detail);
 //个人主页
 const userController = require('../controller/pages/user.js');
 router.get('/user', userController.user);
+//社区
+const communityController = require('../controller/pages/community.js');
+router.get('/community', communityController.community);
+router.get('/community/video', communityController.communityVideo);
+router.get('/community/forum', communityController.communityForum);
 module.exports = router;
