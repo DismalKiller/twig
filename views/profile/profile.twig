@@ -1,0 +1,76 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <div class="profile">
+        <div>
+            <div class="banner">
+                <img src="/img/banner.png" alt="">
+            </div>
+            <div class="todo">
+                <h3>今日代办 <span>+</span></h3>
+            </div>
+        </div>
+        <div>
+            <div class="friend">
+                <h3>我的好友</h3>
+            </div>
+            <div class="content"></div>
+        </div>
+        <div>
+            <div class="recent-reads"></div>
+            <div class="recent-replies"></div>
+        </div>
+        <div>
+            <div class="my-article"></div>
+        </div>
+    </div>
+    <style>
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #D7E7EB;
+            gap: 15px;
+            padding-top: 15px;
+
+            & > div {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                box-sizing: border-box;
+
+                & > div {
+                    background: #fff;
+                    border-radius: 20px;
+                    padding: 15px 28px;
+                }
+
+                .banner {
+                    padding: 0;
+                    width: 995px;
+                    height: 230px;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .todo {
+                    width: 242px;
+                    height: 230px;
+
+                    & > h3 {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                }
+
+                .friend {
+                    width: 288px;
+                    height: 363px;
+                }
+            }
+        }
+    </style>
+{% endblock %}
